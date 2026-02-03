@@ -13,5 +13,10 @@
     "name": "Miniclip",
     "url": "https://www.miniclip.com/games/fr/",
     "icon": "videogame_asset"
+  },
+  {
+    "name": "Youtube",
+    "url": "https://www.youtube.com/",
+    "icon": "public"
   }
 ]
