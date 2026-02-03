@@ -43,5 +43,30 @@
     "name": "y8",
     "url": "https://y8.com",
     "icon": "public"
+  },
+  {
+    "name": "1001 Jeux",
+    "url": "https://www.1001jeux.fr/",
+    "icon": "hub"
+  },
+  {
+    "name": "Subway Surfer",
+    "url": "https://subway-surfers.gg/",
+    "icon": "extension"
+  },
+  {
+    "name": "Minecraft",
+    "url": "https://eaglercraft.com/play/?version=1.8.8",
+    "icon": "code_blocks"
+  },
+  {
+    "name": "Block Blast",
+    "url": "https://blockblastonline.com/",
+    "icon": "brick"
+  },
+  {
+    "name": "Snake",
+    "url": "https://www.snake.be/",
+    "icon": "favorite"
   }
 ]
