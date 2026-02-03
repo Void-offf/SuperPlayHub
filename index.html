@@ -2,54 +2,140 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>🎮 Hub de Jeux</title>
+<title>🎮 Game Launcher</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;min-height:100vh;}
-header{text-align:center;padding:50px 20px 20px;}
-header h1{font-size:2.5em;margin-bottom:10px;}
-header p{opacity:.85;font-size:1.1em;}
-.container{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:25px;padding:40px;max-width:1000px;margin:auto;}
-.card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#1f2937,#111827);border-radius:50%;width:110px;height:110px;margin:auto;cursor:pointer;transition:all .3s ease;box-shadow:0 8px 20px rgba(0,0,0,.4);}
-.card:hover{transform:scale(1.15);box-shadow:0 15px 30px rgba(0,0,0,.6);}
-.card .material-icons{font-size:48px;color:#ffeb3b;}
-.title{margin-top:12px;font-size:1em;font-weight:600;text-align:center;}
-footer{text-align:center;padding:20px;font-size:14px;opacity:.7;}
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:radial-gradient(circle at top,#1f2937,#020617);
+  color:white;
+  min-height:100vh;
+}
+
+header{
+  padding:30px 20px 10px;
+  text-align:center;
+}
+header h1{
+  font-size:2.2em;
+  font-weight:700;
+}
+header p{
+  opacity:.7;
+  margin-top:6px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:28px;
+  padding:35px;
+  max-width:900px;
+  margin:auto;
+}
+
+.app{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+
+.icon{
+  width:76px;
+  height:76px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#2563eb,#7c3aed);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.45);
+  transition:.25s ease;
+}
+
+.icon .material-icons{
+  font-size:36px;
+  color:white;
+}
+
+.app:hover .icon{
+  transform:scale(1.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.7);
+}
+
+.label{
+  margin-top:10px;
+  font-size:.9em;
+  opacity:.9;
+  text-align:center;
+  max-width:90px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  opacity:.5;
+  font-size:13px;
+}
 </style>
 </head>
 <body>
 
 <header>
-<h1>🎮 Hub de Jeux</h1>
-<p>Par Yanis lee sigma</p>
+  <h1>🎮 Game Launcher</h1>
+  <p>Style applis • rapide • moderne</p>
 </header>
 
-<div class="container" id="gameContainer">
-  <!-- Les jeux seront générés ici -->
-</div>
+<div class="grid" id="apps"></div>
 
 <footer>
-<p>✨ Si vous voulez plus de jeux demander a Yanis :)</p>
+  <p>Launcher Web • GitHub Pages</p>
 </footer>
 
 <script>
-// Charger les jeux depuis sites.json
-fetch('sites.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('gameContainer');
-    data.forEach(site => {
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.onclick = () => window.open(site.url,'_blank');
-      div.innerHTML = `<span class="material-icons">${site.icon}</span><div class="title">${site.name}</div>`;
-      container.appendChild(div);
-    });
-  })
-  .catch(err => console.error("Erreur chargement sites:", err));
+const games = [
+  {name:"CrazyGames",url:"https://www.crazygames.com/fr",icon:"flash_on"},
+  {name:"Miniclip",url:"https://www.miniclip.com/games/fr/",icon:"videogame_asset"},
+  {name:"Youtube",url:"https://www.youtube.com/",icon:"public"},
+  {name:"freeonlinegame",url:"https://www.freeonlinegame.games",icon:"shield"},
+  {name:"GeoGuessr",url:"https://www.geoguessr.com/fr",icon:"travel_explore"},
+  {name:"AddictingGames",url:"https://www.addictinggames.com",icon:"videogame_asset"},
+  {name:"Overtide",url:"https://overtide.io/",icon:"flash_on"},
+  {name:"PlayHub",url:"https://playhub.com/fr",icon:"hub"},
+  {name:"y8",url:"https://y8.com",icon:"public"},
+  {name:"1001 Jeux",url:"https://www.1001jeux.fr/",icon:"hub"},
+  {name:"Subway Surfer",url:"https://subway-surfers.gg/",icon:"extension"},
+  {name:"Minecraft",url:"https://eaglercraft.com/play/?version=1.8.8",icon:"grid_view"},
+  {name:"Block Blast",url:"https://blockblastonline.com/",icon:"view_module"},
+  {name:"Snake",url:"https://www.snake.be/",icon:"favorite"}
+];
+
+const apps = document.getElementById("apps");
+
+games.forEach(g=>{
+  const el=document.createElement("div");
+  el.className="app";
+  el.onclick=()=>window.open(g.url,"_blank");
+  el.innerHTML=`
+    <div class="icon">
+      <span class="material-icons">${g.icon}</span>
+    </div>
+    <div class="label">${g.name}</div>
+  `;
+  apps.appendChild(el);
+});
 </script>
 
 </body>
 </html>
+
