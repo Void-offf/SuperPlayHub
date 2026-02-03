@@ -18,5 +18,25 @@
     "name": "Youtube",
     "url": "https://www.youtube.com/",
     "icon": "public"
+  },
+  {
+    "name": "freeonlinegame",
+    "url": "https://www.freeonlinegame.games",
+    "icon": "shield"
+  },
+  {
+    "name": "GeoGuessr",
+    "url": "https://www.geoguessr.com/fr",
+    "icon": "shield"
+  },
+  {
+    "name": "AddictingGames",
+    "url": "https://www.addictinggames.com",
+    "icon": "videogame_asset"
+  }
+  {
+    "name": "Overtide",
+    "url": "https://overtide.io/",
+    "icon": "flash_on"
   }
 ]
