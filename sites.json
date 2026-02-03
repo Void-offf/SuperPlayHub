@@ -38,5 +38,10 @@
     "name": "PlayHub",
     "url": "https://playhub.com/fr",
     "icon": "shield"
+  },
+  {
+    "name": "y8",
+    "url": "https://y8.com",
+    "icon": "public"
   }
 ]
